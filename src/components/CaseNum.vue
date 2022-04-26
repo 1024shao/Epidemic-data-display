@@ -3,8 +3,8 @@
 		<div class="container">
 			<div class="title">
 				<span
-					>截至 {{ formatData(caseNumData.modifyTime) }} 全国数据统计 hhh sss
-					sssh</span
+					>截至 {{ formatData(caseNumData.modifyTime) }} 全国数据统计 hh s sh
+					sss sssh</span
 				>
 			</div>
 		</div>
