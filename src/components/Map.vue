@@ -1,8 +1,6 @@
 <template>
   <div>
-    <p class="title">
-      <i></i> 疫情地图
-    </p>
+    <p class="title"><i></i> 疫情地图</p>
     <div id="chinaMap"></div>
   </div>
 </template>
@@ -10,17 +8,18 @@
 <script>
 import api from '../api/index'
 export default {
-  name: "Map",
+  name: 'Map',
   data() {
     return {
-      cityMapData: []
-    };
+      cityMapData: [],
+    }
   },
   mounted() {
-    api.getCaseNum({
-      key: "d7c335f2e7856ec48c1962a99fcc6f98"
-    })
-      .then(res => {
+    api
+      .getCaseNum({
+        key: 'd7c335f2e7856ec48c1962a99fcc6f98',
+      })
+      .then((res) => {
         console.log(res)
         console.log('!@@')
         for (var i = 0; i < res.newslist.length; i++) {
@@ -29,41 +28,39 @@ export default {
             value: res.newslist[i].currentConfirmedCount,
             itemStyle: {
               normal: {
-                areaColor: this.setColor(
-                  res.newslist[i].currentConfirmedCount
-                )
-              }
-            }
-          };
-          this.cityMapData.push(temp);
+                areaColor: this.setColor(res.newslist[i].currentConfirmedCount),
+              },
+            },
+          }
+          this.cityMapData.push(temp)
         }
-        this.$charts.chinaMap("chinaMap", this.cityMapData);
-      });
+        this.$charts.chinaMap('chinaMap', this.cityMapData)
+      })
   },
   methods: {
     setColor(value) {
-      let currentColor = "";
+      let currentColor = ''
       switch (true) {
         case value == 0:
-          currentColor = "#fff";
-          break;
+          currentColor = '#fff'
+          break
         case value > 0 && value < 10:
-          currentColor = "#FDFDCF";
-          break;
+          currentColor = '#FDFDCF'
+          break
         case value >= 10 && value < 100:
-          currentColor = "#FE9E83";
-          break;
+          currentColor = '#FE9E83'
+          break
         case value >= 100 && value < 500:
-          currentColor = "#E55A4E";
-          break;
+          currentColor = '#E55A4E'
+          break
         case value >= 500 && value < 10000:
-          currentColor = "#4F070D";
-          break;
+          currentColor = '#4F070D'
+          break
       }
-      return currentColor;
-    }
-  }
-};
+      return currentColor
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -91,7 +88,7 @@ export default {
   background: #fff;
 }
 .title::before {
-  content: "";
+  content: '';
   width: 5px;
   height: 20px;
   background: #4169e2;
