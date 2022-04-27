@@ -71,7 +71,7 @@
             <strong style="color: rgb(174, 33, 44)">{{
               caseNumData.confirmedCount
             }}</strong>
-            <span>累计确诊</span>
+            <span>累计确诊11</span>
           </div>
         </li>
         <li>
